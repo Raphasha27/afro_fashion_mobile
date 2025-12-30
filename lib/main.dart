@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const AfroFashionApp());
@@ -19,7 +20,8 @@ class AfroFashionApp extends StatelessWidget {
           secondary: const Color(0xFF1A5276), // Ocean Blue
           primary: const Color(0xFFD35400),
         ),
-        fontFamily: 'Poppins', // Assuming font is added or using default
+        fontFamily: 'Poppins',
+        textTheme: GoogleFonts.poppinsTextTheme(),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           foregroundColor: Color(0xFF17202A),
@@ -190,7 +192,16 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
                   final product = filteredProducts[index];
-                  return ProductCard(product: product, onAdd: () => _addToCart(product));
+                  return ProductCard(
+                    product: product, 
+                    onAdd: () => _addToCart(product),
+                    onTap: () {
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (c) => ProductDetailsScreen(product: product, onAdd: () => _addToCart(product)))
+                      );
+                    },
+                  );
                 },
                 childCount: filteredProducts.length,
               ),
@@ -205,12 +216,15 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
 class ProductCard extends StatelessWidget {
   final Product product;
   final VoidCallback onAdd;
+  final VoidCallback onTap;
 
-  const ProductCard({super.key, required this.product, required this.onAdd});
+  const ProductCard({super.key, required this.product, required this.onAdd, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -263,6 +277,99 @@ class ProductCard extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ProductDetailsScreen extends StatelessWidget {
+  final Product product;
+  final VoidCallback onAdd;
+
+  const ProductDetailsScreen({super.key, required this.product, required this.onAdd});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(product.name)),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            AspectRatio(
+              aspectRatio: 1,
+              child: Image.network(product.image, fit: BoxFit.cover),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1A5276).withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Text(
+                          product.region,
+                          style: const TextStyle(color: Color(0xFF1A5276), fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Text(
+                        'R${product.price.toStringAsFixed(0)}',
+                        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFFD35400)),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    product.name,
+                    style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    'Category: ${product.category.toUpperCase()}',
+                    style: TextStyle(color: Colors.grey[600]),
+                  ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    'Description',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'This authentic African piece is handcrafted using traditional techniques passed down through generations. Each stitch tells a story of heritage and culture.',
+                    style: TextStyle(height: 1.5),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 10)],
+        ),
+        child: ElevatedButton(
+          onPressed: () {
+            onAdd();
+            Navigator.pop(context);
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFFD35400),
+            foregroundColor: Colors.white,
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          ),
+          child: const Text('Add to Cart', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+        ),
       ),
     );
   }
