@@ -2,6 +2,8 @@
 
 AfroFashion is a mobile application dedicated to showcasing and selling authentic African fashion from across the continent. From South African Maxhosa cardigans to Nigerian Ankara dresses, the app brings the spirit of Africa to your fingertips.
 
+![App Screenshot](app_screenshot.png)
+
 ## Features
 
 - **Product Discovery**: Browse a curated list of African fashion items.
