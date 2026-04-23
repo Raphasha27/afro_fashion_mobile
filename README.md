@@ -1,35 +1,37 @@
-# AfroFashion Mobile App 🌍
+# 🏛️ KIROV DYNAMICS | AFROFASHION MOBILE (v2.0)
 
-AfroFashion is a mobile application dedicated to showcasing and selling authentic African fashion from across the continent. From South African Maxhosa cardigans to Nigerian Ankara dresses, the app brings the spirit of Africa to your fingertips.
+[![Kirov Dynamics](https://img.shields.io/badge/Kirov_Dynamics-Sovereign_Intelligence-002D62?style=for-the-badge&labelColor=0d1117)](https://github.com/Raphasha27)
+![Status](https://img.shields.io/badge/Status-🚀_Active-3fb950?style=for-the-badge&labelColor=0d1117)
 
+> **"Digital Excellence for the African Fashion Industry."**
+
+## 🖼️ Visual Showcase
 ![App Screenshot](app_screenshot.png)
 
-## Features
+---
+**AfroFashion** is a mobile application dedicated to showcasing and selling authentic African fashion from across the continent. Developed as a strategic commercial asset within the **Kirov Dynamics** infrastructure, it bridges local artisans with a global digital marketplace.
 
-- **Product Discovery**: Browse a curated list of African fashion items.
-- **Categorization**: Filter products by Men, Women, and Accessories.
-- **Regional Highlights**: See where each piece originates from.
-- **Shopping Cart**: Add items to your cart and manage your selections.
-- **Checkout (Coming Soon)**: Integration with PayFast and Yoco for seamless payments.
+## ✨ Features
 
-## Tech Stack
+- **🛍️ Product Discovery**: Browse a curated list of African fashion items.
+- **🏷️ Categorization**: Filter products by Men, Women, and Accessories.
+- **🌍 Regional Highlights**: See where each piece originates from.
+- **🛒 Shopping Cart**: Add items to your cart and manage your selections.
+- **💳 Checkout (v2.0)**: Integrated with PayFast and Yoco for seamless payments.
+
+## 🛠️ Tech Stack
 
 - **Framework**: Flutter
 - **Language**: Dart
-- **State Management**: StatefulWidget (Minimalistic)
+- **State Management**: Provider / Riverpod ready
+- **CI/CD**: Elite Developer v4.0.0 Standard
 
-## Screens
+## 🚀 Getting Started
 
-- **Home**: Featured banner and product grid with filtering.
-- **Cart**: Summary of selected items and total price calculation.
-- **Success/Info Modals**: Feedback for actions like adding to cart.
+1. `git clone https://github.com/Raphasha27/afro_fashion.git`
+2. `flutter pub get`
+3. `flutter run`
 
-## Getting Started
+---
+*Developed by Raphasha27 - Kirov Dynamics 2026.*
 
-1. Clone this repository.
-2. Run `flutter pub get` to install dependencies.
-3. Run `flutter run` to launch the app on your device or emulator.
-
-## License
-
-MIT
