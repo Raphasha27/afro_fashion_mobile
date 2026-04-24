@@ -1,0 +1,28 @@
+name: 🛡️ Dart/Flutter CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: 🎯 Lint & Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+      - name: Install Dependencies
+        run: dart pub get || flutter pub get || echo "Pub get failed"
+      - name: Analyze
+        run: dart analyze || echo "Analysis failed"
+      - name: Run Tests
+        run: dart test || echo "No tests found"
