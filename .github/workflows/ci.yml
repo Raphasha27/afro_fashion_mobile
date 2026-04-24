@@ -10,7 +10,8 @@ on:
 jobs:
   flutter: 
     name: Flutter (Analyze & Build)
-    runs-on: - uses: actions/checkout@v4
+    runs-on: -
+    uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
           flutter-version:
@@ -25,7 +26,8 @@ jobs:
   security_scan: 
     name: Security Scan (Trivy)
     needs: flutter
-    runs-on: - uses: actions/checkout@v4
+    runs-on: -
+    uses: actions/checkout@v4
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
