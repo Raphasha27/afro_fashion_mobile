@@ -1,20 +1,26 @@
 name: Continuous Integration
 
 on:
+  workflow_dispatch:
+
   push:
-    branches: [ main, master ]
+    branches: [ master ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ master ]
 
 jobs:
   flutter:
     name: Flutter (Analyze & Build)
-    runs-on: ubuntu-latest
+    runs-on:
+  workflow_dispatch:
+ ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.x'
+          flutter-version:
+  workflow_dispatch:
+ '3.x'
           channel: 'stable'
           cache: true
       - name: Install dependencies
@@ -27,7 +33,9 @@ jobs:
   security_scan:
     name: Security Scan (Trivy)
     needs: flutter
-    runs-on: ubuntu-latest
+    runs-on:
+  workflow_dispatch:
+ ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Run Trivy vulnerability scanner
@@ -38,3 +46,4 @@ jobs:
           format: 'table'
           exit-code: '0'
           severity: 'CRITICAL,HIGH'
+
