@@ -24,13 +24,13 @@ graph TD
     classDef external fill:#111,stroke:#b39ddb,stroke-width:1px,color:#fff
 
     %% Nodes
-    App[Flutter Mobile App<br>iOS & Android]:::frontend
+    App["Flutter Mobile App<br>iOS & Android"]:::frontend
     
-    Auth[Authentication<br>Firebase Auth]:::backend
-    DB[(Firestore<br>Product Catalog)]:::backend
-    Storage[(Cloud Storage<br>High-Res Assets)]:::backend
+    Auth["Authentication<br>Firebase Auth"]:::backend
+    DB["(Firestore<br>Product Catalog)"]:::backend
+    Storage["(Cloud Storage<br>High-Res Assets)"]:::backend
     
-    Payment[Payment Gateway<br>Paystack / Stripe]:::external
+    Payment["Payment Gateway<br>Paystack / Stripe"]:::external
 
     %% Relationships
     App -->|Login / OTP| Auth
