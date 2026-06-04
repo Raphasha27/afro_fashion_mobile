@@ -70,6 +70,13 @@ firebase*.json
 android/app/google-services.json
 ios/Runner/GoogleService-Info.plist
 
+# Environment files
+.env.local
+.env.production
+node_modules/
+__pycache__/
+.vercel
+
 # iOS related
 **/ios/Runner/GeneratedPluginRegistrant.*
 **/ios/Runner/GeneratedPluginRegistrant.m
