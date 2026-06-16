@@ -7,6 +7,8 @@
 </div>
 
 ## 🌍 Overview
+
+[![Security](https://img.shields.io/badge/Security-Policy-1f6feb?style=for-the-badge&logo=github)](SECURITY.md)
 Welcome to the official repository for **Afro Fashion Mobile**. 
 This is a premium mobile fashion hub built specifically for the African digital economy. It features high-fidelity asset showcasing, seamless cross-platform performance, and an intuitive user experience.
 
